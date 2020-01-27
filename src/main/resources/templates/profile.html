@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>profile</title>
+</head>
+<body>
+
+<nav th:replace="partials/navbar :: main-nav"></nav>
+
+<h1>username: <span th:text="${username}">user</span></h1>
+<h1>password: <span th:text="${password}">pass</span></h1>
+
+
+<footer th:replace="partials/footer :: main-footer"></footer>
+</body>
+</html>

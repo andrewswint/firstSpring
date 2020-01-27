@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -28,6 +28,11 @@
         <form action="/rollDice" method="post">
             <input type="hidden" value="6" name="guess"><button type="submit">6</button></form></li>
 </ul>
+
+<h1>Your guess was <span th:text="${guess}"></span></h1>
+<h1>The roll was <span th:text="${randomNum}"></span></h1>
+<h3 th:if="${guess} == ${randomNum}">You guessed right</h3>
+<h3 th:if="${guess} != ${randomNum}">You guessed wrong</h3>
 
 </body>
 </html>

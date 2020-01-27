@@ -13,15 +13,15 @@ public class RollDiceController {
 
     @GetMapping("/rollDice")
     public String roll () {
-        return ("/roll-dice");
+        return ("roll-dice");
     }
 
     @PostMapping("/rollDice")
     public String rolled (@RequestParam Integer guess, Model model) {
         Random randomNum = new Random();
-        model.addAttribute("randomNum", randomNum.nextInt(6));
+        model.addAttribute("randomNum", randomNum.nextInt(6) + 1);
         model.addAttribute("guess", guess);
-        return "guessPage";
+        return "roll-dice";
     }
 
 }

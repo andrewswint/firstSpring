@@ -14,3 +14,10 @@ VALUES
 (12, 'Bowser', 'TX');
 
 SHOW CREATE TABLE dogs;
+
+USE spring_blog_db;
+INSERT INTO posts (title, body)
+VALUES
+('title1', 'body1'),
+('title2', 'body2'),
+('title3', 'body3');

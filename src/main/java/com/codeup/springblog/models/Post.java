@@ -8,7 +8,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, length = 11, columnDefinition = "int(11) unsigned")
-    private int id;
+    private Long id;
     @Column(nullable = false, length = 200)
     private String title;
     @Column(nullable = false, length = 1000)
@@ -16,7 +16,7 @@ public class Post {
 
     public Post(){}
 
-    public Post(String title, String body) {
+    public Post(String title, String body, Long id) {
         this.title = title;
         this.body = body;
         this.id = id;
@@ -30,7 +30,7 @@ public class Post {
         return body;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -42,7 +42,7 @@ public class Post {
         this.body = body;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

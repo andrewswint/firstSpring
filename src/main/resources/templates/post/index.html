@@ -13,7 +13,13 @@
     <input type="hidden" th:value="${post.id}" name="id">
     <input type="hidden" th:value="${post.title}" name="title">
     <input type="hidden" th:value="${post.body}" name="body">
-    <button type="submit">Submit</button>
+    <button type="submit">Edit</button>
+    </form>
+    <form action="/post/delete">
+        <input type="hidden" th:value="${post.id}" name="id">
+        <input type="hidden" th:value="${post.title}" name="title">
+        <input type="hidden" th:value="${post.body}" name="body">
+        <button type="submit">Delete</button>
     </form>
 </div>
 

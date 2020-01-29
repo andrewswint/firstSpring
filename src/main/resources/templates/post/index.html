@@ -3,22 +3,32 @@
 <head th:insert="fragment/header.html :: head">
 </head>
 <body>
-<h1>Here are all the posts...</h1>
-<div th:each="post : ${posts}">
-    <p th:text="${post.title}"></p>
-    <p th:text="${post.body}"></p>
-    <form action="/post/update" method="get">
-    <input type="hidden" th:value="${post.id}" name="id">
-    <input type="hidden" th:value="${post.title}" name="title">
-    <input type="hidden" th:value="${post.body}" name="body">
-    <button type="submit">Edit</button>
-    </form>
-    <form action="/post/delete">
-        <input type="hidden" th:value="${post.id}" name="id">
-        <input type="hidden" th:value="${post.title}" name="title">
-        <input type="hidden" th:value="${post.body}" name="body">
-        <button type="submit">Delete</button>
-    </form>
+<h1 class="title is-1">Here are all the posts...</h1>
+
+<div class="column is-one-third">
+<div class="card" th:each="post : ${posts}">
+    <div class="card-content">
+        <p class="title" th:text="${post.title}">
+        </p>
+        <p class="subtitle" th:text="${post.body}">
+        </p>
+    </div>
+    <footer class="card-footer">
+        <form action="/post/update" method="get">
+            <input type="hidden" th:value="${post.id}" name="id">
+            <input type="hidden" th:value="${post.title}" name="title">
+            <input type="hidden" th:value="${post.body}" name="body">
+            <button class="button is-info" type="submit">Edit</button>
+        </form>
+        <form action="/post/delete">
+            <input type="hidden" th:value="${post.id}" name="id">
+            <input type="hidden" th:value="${post.title}" name="title">
+            <input type="hidden" th:value="${post.body}" name="body">
+            <button class="button is-danger" type="submit">Delete</button>
+        </form>
+        </p>
+    </footer>
+</div>
 </div>
 
 </body>

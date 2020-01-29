@@ -14,6 +14,9 @@ public class Post {
     @Column(nullable = false, length = 1000)
     private String body;
 
+    @OneToOne(mappedBy = "post")
+    private PostDetails postDetails;
+
     public Post(){}
 
     public Post(String title, String body, Long id) {
@@ -28,6 +31,10 @@ public class Post {
 
     public String getBody() {
         return body;
+    }
+
+    public PostDetails getPostDetails() {
+        return postDetails;
     }
 
     public Long getId() {

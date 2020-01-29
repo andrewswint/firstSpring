@@ -21,3 +21,9 @@ VALUES
 ('title1', 'body1'),
 ('title2', 'body2'),
 ('title3', 'body3');
+
+
+INSERT INTO post_details (is_awesome, history_of_post, topic_description, post_id)
+VALUES
+('1', 'this is test 1 history', 'this is the topic of test 1', 10),
+('0', 'this is test 2 history', 'this is the topic of test 2', 12);

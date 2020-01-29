@@ -80,4 +80,11 @@ public class PostController {
         return "redirect:/post";
     }
 
+    @GetMapping("/newTest")
+    @ResponseBody
+    public String postDetails() {
+        Post newPost = postDao.getOne(10L);
+        return newPost.getPostDetails().getHistoryOfPost();
+    }
+
 }

@@ -1,9 +1,11 @@
 package com.codeup.springblog.models;
 import javax.persistence.*;
+import java.awt.*;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
-public class Post {
+public class Post<image> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +18,10 @@ public class Post {
 
     @OneToOne(mappedBy = "post")
     private PostDetails postDetails;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Images> images;
+
 
     public Post(){}
 

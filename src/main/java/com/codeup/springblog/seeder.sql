@@ -16,12 +16,13 @@ VALUES
 SHOW CREATE TABLE dogs;
 
 USE spring_blog_db;
-INSERT INTO posts (title, body)
+truncate posts;
+INSERT INTO posts (title, body, user_id)
 VALUES
-('title1', 'body1'),
-('title2', 'body2'),
-('title3', 'body3'),
-('cats', 'information about cats');
+('title1', 'body1', 1),
+('title2', 'body2', 1),
+('title3', 'body3', 1),
+('cats', 'information about cats', 1);
 
 
 truncate post_details;
@@ -35,3 +36,7 @@ INSERT  INTO images (image_title, url, post_id) VALUES
 ('this is a cat', 'https://resize.hswstatic.com/w_907/gif/bobcat-2.jpg', 4),
 ('this is the second', 'https://www.nwf.org/-/media/NEW-WEBSITE/Shared-Folder/Wildlife/Mammals/mammal_mountain-lion_shutterstock_600x300.ashx', 4),
 ('this is the third', 'https://science.sciencemag.org/content/sci/359/6380/1110/F1.large.jpg', 4);
+
+
+INSERT INTO users (username, email, password) VALUES
+('user1', 'email@email.com', 'password');

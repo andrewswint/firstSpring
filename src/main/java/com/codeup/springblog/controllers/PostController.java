@@ -1,22 +1,26 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.repositories.ImgRepo;
 import com.codeup.springblog.repositories.PostRepository;
+import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class PostController {
 
+    private final ImgRepo imgDao;
     private final PostRepository postDao;
-    public PostController(PostRepository postDao) {
+    private final UserRepository userDao;
+
+    public PostController(ImgRepo imgDao, PostRepository postDao, UserRepository userDao) {
+        this.imgDao = imgDao;
         this.postDao = postDao;
+        this.userDao = userDao;
     }
+
 
     @GetMapping(path = "/post")
     public String post(Model model) {
@@ -85,6 +89,13 @@ public class PostController {
     public String postDetails() {
         Post newPost = postDao.getOne(10L);
         return newPost.getPostDetails().getHistoryOfPost();
+    }
+
+    @GetMapping("/post/show")
+    public String postShow(Model model) {
+        model.addAttribute("post", postDao.getOne(4L));
+        model.addAttribute("user", userDao.getOne(1L));
+        return "post/show";
     }
 
 }

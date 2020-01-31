@@ -72,4 +72,12 @@ public class Post<image> {
     public List<Images> getImages() {
         return images;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

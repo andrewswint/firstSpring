@@ -4,6 +4,7 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.repositories.ImgRepo;
 import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.UserRepository;
+import com.codeup.springblog.services.EmailServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +15,13 @@ public class PostController {
     private final ImgRepo imgDao;
     private final PostRepository postDao;
     private final UserRepository userDao;
+    private final EmailServices emailServices;
 
-    public PostController(ImgRepo imgDao, PostRepository postDao, UserRepository userDao) {
+    public PostController(ImgRepo imgDao, PostRepository postDao, UserRepository userDao, EmailServices emailServices) {
         this.imgDao = imgDao;
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailServices = emailServices;
     }
 
 
@@ -65,6 +68,7 @@ public class PostController {
     @PostMapping("/post/create")
     public String create(@ModelAttribute Post post) {
         postDao.save(post);
+        emailServices.prepareAndSend(postDao.getOne(1L),"A post has been created", "The email sent");
         return "redirect:/post";
     }
 

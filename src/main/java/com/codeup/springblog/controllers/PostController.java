@@ -68,19 +68,15 @@ public class PostController {
         return "redirect:/post";
     }
 
-    @GetMapping(path = "/post/update")
-    public String postUpdate(Model model) {
-        model.addAttribute("post", new Post());
+    @GetMapping(path = "/post/{id}/update")
+    public String postUpdate(Model model, @PathVariable long id) {
+        model.addAttribute("post", postDao.getOne(id));
         return "post/update";
     }
 
-    @PostMapping(path="/post/update")
-    public String postPost() {
-        model.addAttribute("id", id);
-        model.addAttribute("title", title);
-        model.addAttribute("body", body);
-        Post updatedPost = new Post(title, body, id);
-        postDao.save(updatedPost);
+    @PostMapping(path = "/post/{id}/update")
+    public String postPost(@ModelAttribute Post post) {
+        postDao.save(post);
         return "redirect:/post";
     }
 

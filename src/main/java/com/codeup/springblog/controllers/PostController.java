@@ -28,48 +28,6 @@ public class PostController {
         return "post/index";
     }
 
-//    @GetMapping("/post/show")
-//    public String postId(Model model) {
-//        Post testPost = new Post("test1", "test1", );
-//        model.addAttribute("title", testPost.getTitle());
-//        model.addAttribute("body", testPost.getBody());
-//        return "post/show";
-//    }
-
-    @GetMapping(path = "/post/create")
-    @ResponseBody
-    public String postCreate() {
-        return "view the form for creating a post";
-    }
-
-//    @PostMapping(path = "/post/create")
-//    @ResponseBody
-//    public String postPost() {
-//        return "create a new post";
-//    }
-
-    @GetMapping(path = "/post/update")
-    public String postUpdate(@RequestParam String id,
-                             @RequestParam String title,
-                             @RequestParam String body, Model model) {
-        model.addAttribute("id", id);
-        model.addAttribute("title", title);
-        model.addAttribute("body", body);
-        return "post/update";
-    }
-
-    @PostMapping(path="/post/update")
-    public String postPost(@RequestParam Long id,
-                           @RequestParam String title,
-                           @RequestParam String body,
-                           Model model) {
-        model.addAttribute("id", id);
-        model.addAttribute("title", title);
-        model.addAttribute("body", body);
-        Post updatedPost = new Post(title, body, id);
-        postDao.save(updatedPost);
-        return "redirect:/post";
-    }
 
     @GetMapping(path = "/post/delete")
     public String postDelete(@RequestParam Long id,
@@ -97,5 +55,34 @@ public class PostController {
         model.addAttribute("user", userDao.getOne(1L));
         return "post/show";
     }
+
+    @GetMapping("/post/create")
+    public String showCreateForm(Model model) {
+       model.addAttribute("post", new Post());
+        return "post/create";
+    }
+
+    @PostMapping("/post/create")
+    public String create(@ModelAttribute Post post) {
+        postDao.save(post);
+        return "redirect:/post";
+    }
+
+    @GetMapping(path = "/post/update")
+    public String postUpdate(Model model) {
+        model.addAttribute("post", new Post());
+        return "post/update";
+    }
+
+    @PostMapping(path="/post/update")
+    public String postPost() {
+        model.addAttribute("id", id);
+        model.addAttribute("title", title);
+        model.addAttribute("body", body);
+        Post updatedPost = new Post(title, body, id);
+        postDao.save(updatedPost);
+        return "redirect:/post";
+    }
+
 
 }

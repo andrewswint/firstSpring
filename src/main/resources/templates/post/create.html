@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>update</title>
+    <title>Create</title>
 </head>
 <body>
 
-<form th:action="@{/post/update}" method="post" th:object="${post}">
+<form th:action="@{/post/create}" th:method="post" th:object="${post}">
     <label for="title">Title</label>
     <input th:field="*{title}" name="title" id="title"/>
     <br />

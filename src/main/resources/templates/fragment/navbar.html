@@ -7,9 +7,11 @@
 <body>
 
 <div th:fragment="main-nav">
-    <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+
+<!--    logged in-->
+    <nav th:if="${user != null}" class="navbar is-black" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item is-white" href="/">Home</a>
+            <a class="navbar-item is-white" href="/">Spring Blog</a>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -20,7 +22,7 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
+                <a href="/" class="navbar-item">
                     Home
                 </a>
 
@@ -41,6 +43,35 @@
                 </form>
             </li>
         </ul>
+    </nav>
+
+<!--logged out-->
+    <nav th:if="${user == null}" class="navbar is-black" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item is-white" href="/">Spring Blog</a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a href="/" class="navbar-item">
+                    Home
+                </a>
+
+                <a href="/post" class="navbar-item">
+                    View All Post
+                </a>
+
+                <a href="/login" class="navbar-item">
+                    Login
+                </a>
+            </div>
+        </div>
     </nav>
 </div>
 

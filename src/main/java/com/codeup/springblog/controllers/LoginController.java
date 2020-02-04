@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
-    @GetMapping("/post/login")
+    @GetMapping("/login")
     public String login() {
         return "post/login";
     }
 
-    @PostMapping("/post/login")
+    @PostMapping("/login")
     public String loggedIn (@RequestParam String username,
                             @RequestParam String password,
                             Model model) {
         model.addAttribute("username", username);
         model.addAttribute("password", password);
-        return "profile";
+        return "post/index";
     }
 
 }

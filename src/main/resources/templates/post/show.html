@@ -4,16 +4,16 @@
 </head>
 <body>
 
-<div th:insert="fragment/navbar.html :: main-nav"></div>
+<!--<div th:insert="fragment/navbar.html :: main-nav"></div>-->
 
-    <div class="card-content">
-        <p class="title" th:text="${post.title}"></p>
-        <p class="title" th:text="${user.email}"></p>
-        <div class="card" th:each="images : ${post.images}">
-            <img th:src="${images.url}" alt="" th:width="400px" th:height="400px">
-        </div>
-    </div>
+<!--    <div class="card-content">-->
+<!--        <p class="title" th:text="${post.title}"></p>-->
+<!--        <p class="title" th:text="${user.email}"></p>-->
+<!--        <div class="card" th:each="images : ${post.images}">-->
+<!--            <img th:src="${images.url}" alt="" th:width="400px" th:height="400px">-->
+<!--        </div>-->
+<!--    </div>-->
 
-<div th:insert="fragment/script.html :: script"></div>
+<!--<div th:insert="fragment/script.html :: script"></div>-->
 </body>
 </html>

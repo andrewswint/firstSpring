@@ -80,4 +80,5 @@ public class Post<image> {
     public void setUser(User user) {
         this.user = user;
     }
+
 }
